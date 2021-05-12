@@ -30,7 +30,7 @@ Blockly.JavaScript['bot'] = function (block) {
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); 
   var yyyy = today.getFullYear();
-  var dateToday = mm + '/' + dd + '/' + yyyy;
+  var dateToday = dd + '/' + mm + '/' + yyyy;
   
   // Question 2 answer
   var hh = String(today.getHours()).padStart(2,'0');
