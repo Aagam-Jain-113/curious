@@ -8,19 +8,40 @@ $(document).ready(function () {
 });
 
 Blockly.Blocks['bot'] = {
-  init: function () {
+  init: function() {
+    this.appendStatementInput("BOT")
+        .setCheck(null)
+        .appendField("bot");
+    this.setNextStatement(true, null);
+    this.setColour(225);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['bot'] = function(block) {
+  var statements_bot = Blockly.JavaScript.statementToCode(block, 'BOT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '\n';
+  return code;
+};
+
+Blockly.Blocks['dropdown'] = {
+  init: function() {
     this.appendValueInput("dropdown_ques")
       .setCheck(null)
       .appendField(new Blockly.FieldDropdown([["Ask me a question:", "questiondetail"], ["What is the date today?", "date"], ["What is the time now?", "time"], ["How are you?", "howru"], ["What is Javascript?", "javascript"], ["What is your name?", "yourname"]]), "Questions");
     this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
     this.setColour(300);
     this.setTooltip("");
     this.setHelpUrl("");
   }
 };
 
-Blockly.JavaScript['bot'] = function (block) {
+Blockly.JavaScript['dropdown'] = function (block) {
   var dropdown__ask_me_a_question = block.getFieldValue('Questions');
+  var value_dropdown_ques = Blockly.JavaScript.valueToCode(block, 'dropdown_ques', Blockly.JavaScript.ORDER_ATOMIC);
 
   // If Question is not selected
   var ques = "Please select a question";
