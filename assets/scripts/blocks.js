@@ -12,25 +12,23 @@ Blockly.Blocks['bot'] = {
     this.appendStatementInput("BOT")
         .setCheck(null)
         .appendField("bot");
-    this.setNextStatement(true, null);
     this.setColour(225);
     this.setTooltip("");
     this.setHelpUrl("");
   }
 };
 
+var code="";
 Blockly.JavaScript['bot'] = function(block) {
   var statements_bot = Blockly.JavaScript.statementToCode(block, 'BOT');
-  // TODO: Assemble JavaScript into code variable.
-  var code = '\n';
   return code;
 };
 
 Blockly.Blocks['dropdown'] = {
   init: function() {
     this.appendValueInput("dropdown_ques")
-      .setCheck(null)
-      .appendField(new Blockly.FieldDropdown([["Ask me a question:", "questiondetail"], ["What is the date today?", "date"], ["What is the time now?", "time"], ["How are you?", "howru"], ["What is Javascript?", "javascript"], ["What is your name?", "yourname"]]), "Questions");
+      .appendField("Ask me a Question: ")
+      .appendField(new Blockly.FieldDropdown([["select", "select"], ["What is the date today?", "date"], ["What is the time now?", "time"], ["How are you?", "howru"], ["What is Javascript?", "javascript"], ["What is your name?", "yourname"]]), "Questions");
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setColour(300);
@@ -41,7 +39,6 @@ Blockly.Blocks['dropdown'] = {
 
 Blockly.JavaScript['dropdown'] = function (block) {
   var dropdown__ask_me_a_question = block.getFieldValue('Questions');
-  var value_dropdown_ques = Blockly.JavaScript.valueToCode(block, 'dropdown_ques', Blockly.JavaScript.ORDER_ATOMIC);
 
   // If Question is not selected
   var ques = "Please select a question";
@@ -68,23 +65,23 @@ Blockly.JavaScript['dropdown'] = function (block) {
   // Question 5 answer
   var myName = "My name is Aagam Jain."
   
-  if (dropdown__ask_me_a_question === "questiondetail") {
-    var code = `var inputTextValue ="${ques}";`;
+  if (dropdown__ask_me_a_question === "select") {
+    code = `var inputTextValue ="${ques}";`;
   }
   else if (dropdown__ask_me_a_question === "date") {
-    var code = `var inputTextValue = "${dateToday}";`;
+    code = `var inputTextValue = "${dateToday}";`;
   }
   else if (dropdown__ask_me_a_question === "time") {
-    var code = `var inputTextValue = "${timeToday}";`;
+    code = `var inputTextValue = "${timeToday}";`;
   }
   else if (dropdown__ask_me_a_question === "howru") {
-    var code = `var inputTextValue = "${how}";`;
+    code = `var inputTextValue = "${how}";`;
   }
   else if (dropdown__ask_me_a_question === "javascript") {
-    var code = `var inputTextValue = "${js}";`;
+    code = `var inputTextValue = "${js}";`;
   }
   else if (dropdown__ask_me_a_question === "yourname") {
-    var code = `var inputTextValue = "${myName}";`;
+    code = `var inputTextValue = "${myName}";`;
   }
   return code;
 };
