@@ -38,8 +38,7 @@ Blockly.Blocks['dropdown'] = {
 };
 
 Blockly.JavaScript['dropdown'] = function (block) {
-  var dropdown__ask_me_a_question = block.getFieldValue('Questions');
-
+  var question = block.getFieldValue('Questions');
   // If Question is not selected
   var ques = "Please select a question";
 
@@ -65,25 +64,25 @@ Blockly.JavaScript['dropdown'] = function (block) {
   // Question 5 answer
   var myName = "My name is Aagam Jain."
   
-  if (dropdown__ask_me_a_question === "select") {
+  if (question === "select") {
     code = `var inputTextValue ="${ques}";`;
   }
-  else if (dropdown__ask_me_a_question === "date") {
+  else if (question === "date") {
     code = `var inputTextValue = "${dateToday}";`;
   }
-  else if (dropdown__ask_me_a_question === "time") {
+  else if (question === "time") {
     code = `var inputTextValue = "${timeToday}";`;
   }
-  else if (dropdown__ask_me_a_question === "howru") {
+  else if (question === "howru") {
     code = `var inputTextValue = "${how}";`;
   }
-  else if (dropdown__ask_me_a_question === "javascript") {
+  else if (question === "javascript") {
     code = `var inputTextValue = "${js}";`;
   }
-  else if (dropdown__ask_me_a_question === "yourname") {
+  else if (question === "yourname") {
     code = `var inputTextValue = "${myName}";`;
   }
-  return code;
+  return 'alert(getAnswer(' + question + ');\n ';
 };
 
 var workspace = Blockly.inject("blocklyDiv", {
