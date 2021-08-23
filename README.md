@@ -1,4 +1,4 @@
-# CuriousJr
+# CuriousJunior
 This is a website made using blockly
 
 Visit the website here: https://curiousjrassignment.netlify.app
